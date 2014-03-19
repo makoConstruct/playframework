@@ -60,7 +60,7 @@ sealed trait JsValue {
     }
 
   /**
-   * Tries to convert the node into a T, throwing an exception if it can't. An implicit Reads[T] must be defined.
+   * Tries to convert the node into a T, throwing a JsResultException if it can't. An implicit Reads[T] must be defined.
    */
   def as[T](implicit fjs: Reads[T]): T = fjs.reads(this).fold(
     valid = identity,
